@@ -36,4 +36,5 @@ Route::post('email/resend', 'Auth\VerificationController@resend')->name('verific
 
 //资源路由
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+Route::get('topics','TopicsController@index');
 

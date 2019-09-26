@@ -12,6 +12,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
+    'default_avatar' => "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2508751264,338998047&fm=26&gp=0.jpg\" height=\"30px",
 
     'name' => env('APP_NAME', 'Laravel'),
 

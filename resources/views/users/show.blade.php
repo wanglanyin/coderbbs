@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title',$user->nmae . '的个人中心')
+@section('title', $user->name . ' 的个人中心')
 @section('content')
 
     <div class="row">

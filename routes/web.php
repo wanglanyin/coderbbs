@@ -39,3 +39,5 @@ Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit'
 Route::get('topics','TopicsController@index')->name('topics.index');
 Route::get('topics/{topic}','TopicsController@show')->name('topics.show');
 
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+

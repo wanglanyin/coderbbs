@@ -13,13 +13,14 @@ class UsersTableSeeder extends Seeder
     {
         //
         $faker = app(Faker\Generator::class);
+        $url = config('app.qiniu_url');
         $avatars = [
-            'https://cdn.learnku.com/uploads/images/201710/14/1/s5ehp11z6s.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/Lhd1SHqu86.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/LOnMrqbHJn.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/xAuDMxteQy.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/ZqM7iaP4CR.png',
-            'https://cdn.learnku.com/uploads/images/201710/14/1/NDnzMutoxX.png',
+            $url .'4d7658c867b7557d5bec7befbb7b53dd.jpeg',
+            $url .'4e3841eadad8ac01bde6b3fc2b1808fa.jpeg',
+            $url .'407f4e3d321bc51b24ee89ed14d96007.jpeg',
+            $url .'bb987e7abf12059ea63fe2b298791e04.jpeg',
+            $url .'fb18af1a60c3dcda409610f3a8bdffb6.jpeg',
+            $url .'cb6e75b3e4b07ce160c03d6cfb5cde52.jpeg',
         ];
         $users = factory(User::class)
             ->times(10)
@@ -41,7 +42,7 @@ class UsersTableSeeder extends Seeder
         $user = User::find(1);
         $user->name = 'Ly_ii';
         $user->email = 'wlany@qq.com';
-        $user->avatar = 'https://cdn.learnku.com/uploads/images/201710/14/1/ZqM7iaP4CR.png';
+        //$user->avatar = 'https://cdn.learnku.com/uploads/images/201710/14/1/ZqM7iaP4CR.png';
         $user->save();
 
     }

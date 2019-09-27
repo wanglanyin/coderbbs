@@ -10,6 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'CoderBBS')</title>
+    <meta name="description" content="@yield('description', 'CoderBBS PHP爱好者社区')" />
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">

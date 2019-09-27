@@ -73,4 +73,11 @@ class TopicsController extends Controller
         }
         return $data;
     }
+
+    public function destroy(Topic $topic) {
+        $this->authorize('destroy',$topic);
+        $topic->delete();
+
+        return redirect()->route('topics.index')->with('success', '成功删除！');
+    }
 }

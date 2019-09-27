@@ -16589,10 +16589,6 @@ body {
 
 /* Topic Index Page */
 
-.topics-index-page .categories-show-page {
-  margin-bottom: 100px;
-}
-
 .topics-index-page .categories-show-page .topic-list .nav > li > a {
   position: relative;
   display: block;

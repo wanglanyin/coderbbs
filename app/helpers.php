@@ -5,10 +5,7 @@ function route_class()
     return str_replace('.', '-', Route::currentRouteName());
 }
 
-function route_active($route,$id = null) {
-    //return request()->fullUrl();
-    if(!$id) {
-        return request()->fullUrlIs(route($route));
-    }
-    return request()->fullUrlIs(route($route,$id));
+function category_nav_active($category_id)
+{
+    return active_class((if_route('categories.show') && if_route_param('category', $category_id)));
 }

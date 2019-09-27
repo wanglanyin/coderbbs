@@ -47,3 +47,5 @@ Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 Route::resource('replies','RepliesController',['only'=>['store','destroy']]);
 //Route::delete('replies','RepliesController@destroy')->name('replies.destroy');
 
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+

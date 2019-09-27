@@ -32,11 +32,25 @@ class TopicsController extends Controller
         return view('topics.create_and_edit', compact('topic', 'categories'));
     }
 
+    public function edit(Topic $topic) {
+        $this->authorize('update', $topic);
+        $categories = Category::all();
+        return view('topics.create_and_edit', compact('topic', 'categories'));
+    }
+
     public function store(TopicRequest $request,Topic $topic) {
         $topic->fill($request->all());
         $topic->user_id = \Auth::id();
         $topic->save();
         return redirect()->route('topics.show', $topic->id)->with('success', '帖子创建成功！');
+    }
+
+    public function update(TopicRequest $request, Topic $topic)
+    {
+        $this->authorize('update', $topic);
+        $topic->update($request->all());
+
+        return redirect()->route('topics.show', $topic->id)->with('success', '更新成功！');
     }
 
     public function uploadImage(Request $request,ImageUploadHandler $uploader) {

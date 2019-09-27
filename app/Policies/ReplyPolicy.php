@@ -21,6 +21,7 @@ class ReplyPolicy
     }
 
     public function destroy(User $user,Reply $reply) {
-        return $user->id == $reply->user_id;
+        //return $user->id == $reply->user_id;
+        return $user->isAuthorOf($reply) || $user->isAuthorOf($reply->topic);
     }
 }

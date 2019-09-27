@@ -39,5 +39,7 @@ Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit'
 
 Route::resource('topics','TopicsController',['only'=>['index', 'create', 'store', 'update', 'edit', 'destroy','show']]);
 
+Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
+
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 

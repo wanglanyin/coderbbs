@@ -22,7 +22,7 @@
 
     @include('layouts._header')
 
-    <div class="container" style="padding-bottom: 10px">
+    <div class="container">
 
         @include('shared._messages')
 

@@ -24,7 +24,7 @@ $config = [
         'aliyun' => [
             'access_key_id' => env('SMS_ALIYUN_ACCESS_KEY_ID'),
             'access_key_secret' => env('SMS_ALIYUN_ACCESS_KEY_SECRET'),
-            'sign_name' => 'LaraBBS',
+            'sign_name' => 'CoderBBS',
         ],
         //...
     ],

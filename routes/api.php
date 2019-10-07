@@ -24,9 +24,11 @@ $api->version('v1', [
     ],function($api) {
         // 短信验证码
         $api->post('verificationCodes', 'VerificationCodesController@store')
-            ->name('api.verificationCodes.store');
+            ->name('v1.verificationCodes.store');
         //用户注册
-        $api->post('users','UsersController@store')->name('api.users.store');
+        $api->post('users','UsersController@store')->name('v1.users.store');
+        //验证码
+        $api->post('captchas','CaptchasController@store')->name('v1.captchas.store');
     });
 
 

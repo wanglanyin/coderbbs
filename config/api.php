@@ -183,6 +183,14 @@ return [
     */
 
     'throttling' => [
+        'access' => [
+            'limit' => 10,
+            'expires' => 1
+        ],
+        'sign' => [
+            'limit' => 5,
+            'expires' => 1
+        ]
 
     ],
 

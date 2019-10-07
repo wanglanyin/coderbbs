@@ -10,6 +10,7 @@ use App\Observers\LinkObserver;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
 use App\Observers\UserObserver;
+use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -42,5 +43,6 @@ class AppServiceProvider extends ServiceProvider
         Reply::observe(ReplyObserver::class);
         Link::observe(LinkObserver::class);
         User::observe(UserObserver::class);
+        Resource::withoutWrapping();
     }
 }

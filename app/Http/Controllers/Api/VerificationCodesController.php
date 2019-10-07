@@ -41,7 +41,7 @@ class VerificationCodesController extends Controller
                 ]);
             }catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
                 $message = $exception->getException('aliyun')->getMessage();
-                return $this->response->errorInternal($message ?: '短信发送异常');
+                abort(500, $message ?: '短信发送异常');
             }
         }
 
@@ -50,7 +50,7 @@ class VerificationCodesController extends Controller
         \Cache::put($key, ['phone' => $phone, 'code' => $code], $expiredAt);
 
         return response()->json([
-            'key' => $key,
+            'verification_key' => $key,
             'expired_at' => $expiredAt->toDateTimeString(),
         ])->setStatusCode(201);
     }

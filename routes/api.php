@@ -29,6 +29,16 @@ $api->version('v1', [
         $api->post('users','UsersController@store')->name('v1.users.store');
         //验证码
         $api->post('captchas','CaptchasController@store')->name('v1.captchas.store');
+        //第三方登陆
+        $api->post('socials/{social_type}/authorizations','AuthorizationsController@socialStore')->where('social_type', 'weixin')->name('v1.socials.authorizations.store');
+        //登陆
+        $api->post('authorizations','AuthorizationsController@store')->name('v1.authorizations.store');
+        //刷新token
+        $api->put('authorizations/current','AuthorizationsController@update')
+            ->name('authorizations.update');
+        //删除token
+        $api->delete('authorizations/current', 'AuthorizationsController@destroy')
+            ->name('authorizations.destroy');
     });
 
 

@@ -35,10 +35,10 @@ $api->version('v1', [
         $api->post('authorizations','AuthorizationsController@store')->name('v1.authorizations.store');
         //刷新token
         $api->put('authorizations/current','AuthorizationsController@update')
-            ->name('authorizations.update');
+            ->name('v1.authorizations.update');
         //删除token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')
-            ->name('authorizations.destroy');
+            ->name('v1.authorizations.destroy');
     });
 
 
@@ -47,7 +47,16 @@ $api->version('v1', [
         'limit' => config('api.throttling.access')['limit'],
         'expires' => config('api.throttling.access')['expires']
     ],function($api) {
+        //游客可访问接口
 
+        //token访问
+        $api->group([
+            'middleware' => 'api.auth'
+        ],function($api) {
+            // 当前登录用户信息
+            $api->get('user', 'UsersController@me')
+                ->name('v1.user.show');
+        });
     });
 
 });

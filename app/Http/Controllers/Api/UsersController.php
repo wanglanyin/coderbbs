@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\Api\UserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Transformers\UserTransformer;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,18 @@ class UsersController extends Controller
             'password' => $request->password,
         ]);
         \Cache::forget($request->verification_key);
-        return new UserResource($user);
+        return $this->response->item($user, new UserTransformer())
+            ->setMeta([
+                'access_token' => auth('api')->login($user),
+                'token_type' => 'Bearer',
+                'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
+            ])
+            ->setStatusCode(201);
+    }
+
+    public function me() {
+
+        return new UserResource(auth('api')->user());
+        //return $this->response->item($this->user(),new UserTransformer());
     }
 }

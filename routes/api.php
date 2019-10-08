@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
+    'middleware' => 'serializer:array'
 ],function ($api) {
     $api->group([
         'middleware' => 'api.throttle',
@@ -56,6 +57,10 @@ $api->version('v1', [
             // 当前登录用户信息
             $api->get('user', 'UsersController@me')
                 ->name('v1.user.show');
+            //图片资源
+            $api->post('images','ImagesController@store')->name('v1.images.store');
+            //编辑用户信息
+            $api->patch('users','UsersController@update')->name('v1.users.update');
         });
     });
 

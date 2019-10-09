@@ -58,6 +58,10 @@ $api->version('v1', [
             ->name('v1.users.topic.index');
         $api->get('topics/{topic}','TopicsController@show')
             ->name('v1.topics.show');
+        $api->get('topics/{topic}/replies','RepliesController@index')
+            ->name('v1.topics.replies.index');
+        $api->get('users/{user}/replies','RepliesController@userIndex')
+            ->name('v1.users.replies.index');
 
         /**
          * token访问
@@ -84,7 +88,6 @@ $api->version('v1', [
                 ->name('v1.topics.destroy');
             $api->post('topics/{topic}/replies','RepliesController@store')
                 ->name('v1.topics.replies.store');
-
         });
     });
 

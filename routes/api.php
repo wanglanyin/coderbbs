@@ -52,14 +52,19 @@ $api->version('v1', [
          * 游客可访问接口
          */
         $api->get('categories','CategoriesController@index')->name('v1.categories.index');
+        //话题列表
         $api->get('topics', 'TopicsController@index')
             ->name('v1.topics.index');
+        //用户发表的话题
         $api->get('users/{user}/topics','TopicsController@userIndex')
             ->name('v1.users.topic.index');
+        //话题详情
         $api->get('topics/{topic}','TopicsController@show')
             ->name('v1.topics.show');
+        //话题回复列表
         $api->get('topics/{topic}/replies','RepliesController@index')
             ->name('v1.topics.replies.index');
+        //用户回复列表
         $api->get('users/{user}/replies','RepliesController@userIndex')
             ->name('v1.users.replies.index');
 
@@ -80,14 +85,21 @@ $api->version('v1', [
             //编辑用户信息
             $api->patch('users','UsersController@update')
                 ->name('v1.users.update');
+            //添加话题
             $api->post('topics','TopicsController@store')
                 ->name('v1.topics.store');
+            //编辑话题
             $api->patch('topics/{topic}','TopicsController@update')
                 ->name('v1.topics.update');
+            //删除话题
             $api->delete('topics/{topic}','TopicsController@destroy')
                 ->name('v1.topics.destroy');
+            //添加回复
             $api->post('topics/{topic}/replies','RepliesController@store')
                 ->name('v1.topics.replies.store');
+            //通知消息列表
+            $api->get('user/notifications','NotificationsController@index')
+                ->name('v1.user.notifications.index');
         });
     });
 

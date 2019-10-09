@@ -65,16 +65,26 @@ $api->version('v1', [
         $api->group([
             'middleware' => 'api.auth'
         ],function($api) {
+            $api->delete('topics/{topic}/replies/{reply}','RepliesController@destroy')
+                ->name('v1.topics.reply.destroy');
             // 当前登录用户信息
             $api->get('user', 'UsersController@me')
                 ->name('v1.user.show');
             //图片资源
-            $api->post('images','ImagesController@store')->name('v1.images.store');
+            $api->post('images','ImagesController@store')
+                ->name('v1.images.store');
             //编辑用户信息
-            $api->patch('users','UsersController@update')->name('v1.users.update');
-            $api->post('topics','TopicsController@store')->name('v1.topics.store');
-            $api->patch('topics/{topic}','TopicsController@update')->name('v1.topics.update');
-            $api->delete('topics/{topic}','TopicsController@destroy')->name('v1.topics.destroy');
+            $api->patch('users','UsersController@update')
+                ->name('v1.users.update');
+            $api->post('topics','TopicsController@store')
+                ->name('v1.topics.store');
+            $api->patch('topics/{topic}','TopicsController@update')
+                ->name('v1.topics.update');
+            $api->delete('topics/{topic}','TopicsController@destroy')
+                ->name('v1.topics.destroy');
+            $api->post('topics/{topic}/replies','RepliesController@store')
+                ->name('v1.topics.replies.store');
+
         });
     });
 

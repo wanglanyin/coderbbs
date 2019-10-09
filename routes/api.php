@@ -49,6 +49,7 @@ $api->version('v1', [
         'expires' => config('api.throttling.access')['expires']
     ],function($api) {
         //游客可访问接口
+        $api->get('categories','CategoriesController@index')->name('v1.categories.index');
 
         //token访问
         $api->group([

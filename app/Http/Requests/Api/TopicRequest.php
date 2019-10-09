@@ -21,6 +21,13 @@ class TopicRequest extends FormRequest
                     'category_id' => 'required|exists:categories,id'
                 ];
                 break;
+            case 'PATCH':
+                return [
+                    'title' => 'string',
+                    'body' => 'string',
+                    'category_id' => 'exists:categories,id',
+                ];
+                break;
         }
     }
 

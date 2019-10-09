@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
-    'middleware' => 'serializer:array'
+    'middleware' => ['serializer:array','bindings']
 ],function ($api) {
     $api->group([
         'middleware' => 'api.throttle',
@@ -67,6 +67,7 @@ $api->version('v1', [
             //编辑用户信息
             $api->patch('users','UsersController@update')->name('v1.users.update');
             $api->post('topics','TopicsController@store')->name('v1.topics.store');
+            $api->patch('topics/{topic}','TopicsController@update')->name('v1.topics.update');
         });
     });
 

@@ -9,6 +9,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class TopicPolicy extends Policy
 {
     public function update(User $user,Topic $topic) {
+        //dd($user->isAuthorOf($topic));
         return $user->isAuthorOf($topic);
     }
 

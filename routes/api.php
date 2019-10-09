@@ -56,6 +56,8 @@ $api->version('v1', [
             ->name('v1.topics.index');
         $api->get('users/{user}/topics','TopicsController@userIndex')
             ->name('v1.users.topic.index');
+        $api->get('topics/{topic}','TopicsController@show')
+            ->name('v1.topics.show');
 
         /**
          * token访问

@@ -52,6 +52,10 @@ $api->version('v1', [
          * 游客可访问接口
          */
         $api->get('categories','CategoriesController@index')->name('v1.categories.index');
+        $api->get('topics', 'TopicsController@index')
+            ->name('v1.topics.index');
+        $api->get('users/{user}/topics','TopicsController@userIndex')
+            ->name('v1.users.topic.index');
 
         /**
          * token访问

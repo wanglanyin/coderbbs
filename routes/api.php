@@ -48,10 +48,14 @@ $api->version('v1', [
         'limit' => config('api.throttling.access')['limit'],
         'expires' => config('api.throttling.access')['expires']
     ],function($api) {
-        //游客可访问接口
+        /**
+         * 游客可访问接口
+         */
         $api->get('categories','CategoriesController@index')->name('v1.categories.index');
 
-        //token访问
+        /**
+         * token访问
+         */
         $api->group([
             'middleware' => 'api.auth'
         ],function($api) {
@@ -62,6 +66,7 @@ $api->version('v1', [
             $api->post('images','ImagesController@store')->name('v1.images.store');
             //编辑用户信息
             $api->patch('users','UsersController@update')->name('v1.users.update');
+            $api->post('topics','TopicsController@store')->name('v1.topics.store');
         });
     });
 

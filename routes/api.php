@@ -68,6 +68,7 @@ $api->version('v1', [
             $api->patch('users','UsersController@update')->name('v1.users.update');
             $api->post('topics','TopicsController@store')->name('v1.topics.store');
             $api->patch('topics/{topic}','TopicsController@update')->name('v1.topics.update');
+            $api->delete('topics/{topic}','TopicsController@destroy')->name('v1.topics.destroy');
         });
     });
 

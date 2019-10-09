@@ -100,6 +100,12 @@ $api->version('v1', [
             //通知消息列表
             $api->get('user/notifications','NotificationsController@index')
                 ->name('v1.user.notifications.index');
+            //通知统计
+            $api->get('user/notifications/stats','NotificationsController@stats')
+                ->name('v1.user.notifications.stats');
+            //标记消息为已读
+            $api->patch('user/read/notifications', 'NotificationsController@read')
+                ->name('v1.user.notifications.read');
         });
     });
 

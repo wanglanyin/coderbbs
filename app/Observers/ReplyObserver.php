@@ -11,6 +11,7 @@ class ReplyObserver
     public function created(Reply $reply) {
         //$reply->topic->increment('reply_count',1);
         $reply->topic->updateReplyCount();
+
         $reply->topic->user->notify(new TopicReplied($reply));
     }
 

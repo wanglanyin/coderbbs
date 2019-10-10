@@ -69,7 +69,10 @@ $api->version('v1', [
             ->name('v1.users.replies.index');
         // 资源推荐
         $api->get('links', 'LinksController@index')
-            ->name('api.links.index');
+            ->name('v1.links.index');
+        // 活跃用户
+        $api->get('actived/users', 'UsersController@activedIndex')
+            ->name('v1.actived.users.index');
 
         /**
          * token访问

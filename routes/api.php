@@ -106,6 +106,9 @@ $api->version('v1', [
             //标记消息为已读
             $api->patch('user/read/notifications', 'NotificationsController@read')
                 ->name('v1.user.notifications.read');
+            //当前登陆用户权限
+            $api->get('user/permissions','PermissionsController@index')
+                ->name('v1.user.permissions.index');
         });
     });
 

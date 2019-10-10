@@ -61,6 +61,7 @@ class Kernel extends HttpKernel
 
     // 中间件别名设置，允许你使用别名调用中间件，例如上面的 api 中间件组调用
     protected $routeMiddleware = [
+        'change-locale' => \App\Http\Middleware\ChangeLocale::class,
         // 只有登录用户才能访问，我们在控制器的构造方法中大量使用
         'auth' => \App\Http\Middleware\Authenticate::class,
         // HTTP Basic Auth 认证

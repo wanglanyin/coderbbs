@@ -67,6 +67,9 @@ $api->version('v1', [
         //用户回复列表
         $api->get('users/{user}/replies','RepliesController@userIndex')
             ->name('v1.users.replies.index');
+        // 资源推荐
+        $api->get('links', 'LinksController@index')
+            ->name('api.links.index');
 
         /**
          * token访问

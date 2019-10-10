@@ -6,6 +6,7 @@ use League\Fractal\TransformerAbstract;
 
 class UserTransformer extends  TransformerAbstract
 {
+    protected $availableIncludes = ['roles'];
     public function transform(User $user)
     {
         return [
@@ -20,5 +21,9 @@ class UserTransformer extends  TransformerAbstract
             'created_at' => (string) $user->created_at,
             'updated_at' => (string) $user->updated_at,
         ];
+    }
+
+    public function includeRoles(User $user) {
+        return $this->collection($user->roles,new RoleTransformer());
     }
 }
